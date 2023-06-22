@@ -20,13 +20,13 @@ public class UserServiceImpl implements IUserService{
 
 	@Override
 	public User login(String un, String psw) {
-		
+		 
 		return userRepo.findByUsernameAndPassword(un, psw);
 	}
 
 	@Override
 	public User isUserExist(String un) {
-		
+		 
 		return userRepo.findByUsername(un);
 	}
 
