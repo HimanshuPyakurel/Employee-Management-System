@@ -65,5 +65,13 @@ public class DepartmentController {
 		 return "redirect:/department/list"; 
 	 }
 	 
+	 @GetMapping("/view")
+	 public String view(@RequestParam int id, Model model) {
+		 	
+		 model.addAttribute("deptObject",deptService.getDeptById(id));
+		 
+		 return "DepartmentViewForm";
+	 }
+	 
 }
 
