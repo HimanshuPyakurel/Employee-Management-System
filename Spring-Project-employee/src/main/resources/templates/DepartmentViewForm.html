@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit department</title>
+
+</head>
+<body>
+	
+	<th:block th:insert="Header.html"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+			<div class="card-header text-center bg-primary text-white "><h5>Department Edit Form</h5></div>
+			
+			<div class="card-body">
+			
+			<form th:object="${deptObject}">
+			
+			   <div class="row p-2">
+			      <div class="col-4">Department Name</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{dpt_name}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Department Head(HoD)</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{dpt_head}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Department Phone</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{dpt_phone}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <input type="hidden" th:field="*{id}">
+			   
+			</form> 
+			
+			 <div class="row p-2">
+			      <div class="col-4"></div>
+			      <div class="col-6">
+			         <a href="/department/list"> <input type="submit" value="Back" class="btn btn-success btn-lg"></a>
+			      </div>
+			   </div> 
+			   
+			</div>
+			
+			<div class="card-footer text-center bg-warning ">copyright@2023</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
