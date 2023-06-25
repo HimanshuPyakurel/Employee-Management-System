@@ -2,27 +2,63 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>signup</title>
+<title>Signup</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/login/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/login/css/style.css">
+    
 </head>
 <body>
-
-   <h1>Signup Form</h1>
-   <hr>
-   
-    <form action="/user/signup" method="post">
-    
-    
-       <p style="color:red"> [[${message}]] </p>
-       
-           FirstName <input type="text"    name="fname"> <br><br>
-           LastName <input type="text"     name="lname"> <br><br>
-           UserName <input type="text"     name="username"> <br><br>
-           Email   <input type="email"     name="email"> <br><br>
-           Password <input type="password" name="password"> <br><br>
-           
-          			<input type="submit" value="Signup">
-       
-       </form>
+	
+<div class="container-fluid">
+	
+	<!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form action="/user/signup" method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="fname" id="name" placeholder="First Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="lname" id="name" placeholder="Last Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                               <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Username"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required/>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="/login/images/signup-image.jpg" alt="sign up image"></figure>
+                        <a href="/user/login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
     
    
    
