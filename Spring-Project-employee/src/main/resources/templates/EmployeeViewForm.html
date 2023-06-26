@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Employee</title>
+
+</head>
+<body>
+	
+	<th:block th:insert="Header.html"></th:block>
+
+	<div class="container-fluid">
+
+		<div class="card">
+			<div class="card-header text-center bg-primary text-white "><h5>Department Edit Form</h5></div>
+			
+			<div class="card-body">
+			
+			<form action="/employee/update" method="post" th:object="${empObject}">
+			
+			   <div class="row p-2">
+			      <div class="col-4">First Name</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{fname}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Last Name</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{lname}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Gender</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{gender}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Email</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{email}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Phone</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{phone}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Company</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{company}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Post</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{post}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Salary</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{salary}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Dob</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{dob}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			    <div class="row p-2">
+			      <div class="col-4">Join Date</div>
+			      <div class="col-6">
+			          <input type="text" th:field="*{joinDate}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4"></div>
+			      <div class="col-6">
+			          <a href="/employee/list"><input type="submit" value="Back" class="btn btn-success btn-lg"></a>
+			      </div>
+			   </div>
+			   
+			   <input type="hidden" th:field="*{id}">
+			   
+			</form>  
+			   
+			</div>
+			<div class="card-footer text-center bg-warning ">copyright@2023</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
