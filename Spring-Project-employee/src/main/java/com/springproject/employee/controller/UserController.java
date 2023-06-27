@@ -60,9 +60,12 @@ public class UserController {
 		
 		@GetMapping("/logout")
 		public String Logout() {
-			
 			return "LoginForm";
 		}
 		
+		 @GetMapping("/home")
+		 public String Home() {
+			 return "Home";
+		 }
 		
 	}
