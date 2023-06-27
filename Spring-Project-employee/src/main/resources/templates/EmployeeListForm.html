@@ -20,15 +20,12 @@
 							<tr>
 								<th>First Name</th>
 								<th>Last Name</th>
-								<th>Gender</th>
-								<th>Email</th>
 								<th>Phone</th>
-								<th>Company</th>
-								<th>Post</th>
-								<th>Salary</th>
 								<th>DoB</th>
 								<th>Join Date</th>
-								
+								<th>Post</th>	
+								<th>City</th>				
+								<th>Action</th>
 							</tr>
 						</thead>
 						
@@ -37,14 +34,13 @@
 							<tr th:each="e: ${empList}">
 								<td>[[${e.fname}]]</td>
 								<td>[[${e.lname}]]</td>
-								<td>[[${e.gender}]]</td>
-								<td>[[${e.email}]]</td>
 								<td>[[${e.phone}]]</td>
-								<td>[[${e.company}]]</td>
-								<td>[[${e.post}]]</td>
-								<td>[[${e.salary}]]</td>
 								<td>[[${e.dob}]]</td>
 								<td>[[${e.joinDate}]]</td>
+								<td>[[${e.post}]]</td>
+								<td>[[${e.address.city}]]</td>
+								
+								
 								
 								<th>
 									<a th:href="@{/employee/edit(id=${e.id})}"> <input type="submit" value="Edit" class="btn btn-success btn-sm"></a>
