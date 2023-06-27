@@ -12,7 +12,7 @@
 	<div class="container-fluid">
 
 		<div class="card">
-			<div class="card-header text-center bg-primary text-white "><h5>Department Edit Form</h5></div>
+			<div class="card-header text-center bg-primary text-white "><h5>Employee View</h5></div>
 			
 			<div class="card-body">
 			
@@ -85,6 +85,75 @@
 			      <div class="col-4">Join Date</div>
 			      <div class="col-6">
 			          <input type="text" th:field="*{joinDate}" readonly="readonly" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Projects</div>
+			      <div class="col-6">
+			          <input type="checkbox" name="projects" value="project-1" th:field="*{projects}" disabled="disabled"> Project-1
+			          &nbsp;&nbsp;<input type="checkbox" name="projects" value="project-2" th:field="*{projects}" disabled="disabled"> Project-2
+			          &nbsp;&nbsp;<input type="checkbox" name="projects" value="project-3" th:field="*{projects}" disabled="disabled"> Project-3
+			          &nbsp;&nbsp;<input type="checkbox" name="projects" value="project-4" th:field="*{projects}" disabled="disabled"> Project-4
+			          &nbsp;&nbsp;<input type="checkbox" name="projects" value="project-5" th:field="*{projects}" disabled="disabled"> Project-5
+			          &nbsp;&nbsp;<input type="checkbox" name="projects" value="project-6" th:field="*{projects}" disabled="disabled"> Project-6
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Country</div>
+			      <div class="col-6">
+			          <input type="text" name="address.country" class="form-control" th:field="*{address.country}" readonly="readonly">
+			      </div>
+			   </div>
+			   
+			 <div class="row p-2">
+			      <div class="col-4">City</div>
+			      <div class="col-6">
+			          <input type="text" name="address.city" th:field="*{address.city}" class="form-control" readonly="readonly">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">State</div>
+			      <div class="col-6">
+			          
+			          <select name="address.state" class="form-control" th:field="*{address.state}" disabled="disabled">
+			          
+			          	<option value=""> Select </option>
+			          	<option value="state-1"> State-1 </option>
+			          	<option value="state-2"> State-2 </option>
+			          	<option value="state-3"> State-3 </option>
+			          	<option value="state-4"> State-4 </option>
+			          	<option value="state-5"> State-5 </option>
+			          	<option value="state-6"> State-6 </option>
+			          	<option value="state-7"> State-7 </option>
+			          
+			          </select>
+
+
+
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">ZipCode</div>
+			      <div class="col-6">
+			          <input type="text" name="address.zipcode" th:field="*{address.zipcode}" class="form-control" readonly="readonly">
+			      </div>
+			   </div>
+			
+			<div class="row p-2">
+			      <div class="col-4">Department</div>
+			      <div class="col-6">
+			         
+			         <select name="department" class="form-control" th:field="*{department}" disabled="disabled">
+			         	
+			         	<option th:each="d: ${deptlist}" th:value="${d.id}" >[[${d.dpt_name}]]</option>
+			         
+			         
+			         </select>
+			      
 			      </div>
 			   </div>
 			   
