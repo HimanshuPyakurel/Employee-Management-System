@@ -38,7 +38,7 @@ public class EmployeeController {
 	}
 	
 	 @GetMapping("/list")
-	 public String deptlist(Model model) {
+	 public String getlist(Model model) {
 		 
 		 model.addAttribute("empList",empService.getallEmp());
 		 
@@ -49,6 +49,8 @@ public class EmployeeController {
 	public String editEmp(@RequestParam long id, Model model) {
 		
 		model.addAttribute("empObject", empService.getEmpById(id));
+		model.addAttribute("deptlist",deptService.getAllDepts());
+		
 		return "EmployeeEditForm";
 	}
 	
@@ -72,6 +74,7 @@ public class EmployeeController {
 	 public String view(@RequestParam long id, Model model) {
 		 
 		 model.addAttribute("empObject",empService.getEmpById(id));
+		 model.addAttribute("deptlist",deptService.getAllDepts());
 		 return "EmployeeViewForm";
 	 }
 	 
