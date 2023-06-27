@@ -8,11 +8,11 @@ public interface EmployeeService {
 	
 	void addEmp(Employee e);
 	
-	void deleteEmp(int id);
+	void deleteEmp(long id);
 	
 	void updateEmp(Employee e);
 	
-	Employee getEmpById(int id);
+	Employee getEmpById(long id);
 	
 	List<Employee> getallEmp();
 }
