@@ -21,25 +21,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void deleteEmp(int id) {
-		empRepo.deleteById(id);
-	}
-
-	@Override
 	public void updateEmp(Employee e) {
 		empRepo.save(e);
-	}
-
-	@Override
-	public Employee getEmpById(int id) {
-		
-		return empRepo.findById(id).get();
 	}
 
 	@Override
 	public List<Employee> getallEmp() {
 		
 		return empRepo.findAll();
+	}
+
+	@Override
+	public void deleteEmp(long id) {
+		empRepo.deleteById(id);
+	}
+
+	@Override
+	public Employee getEmpById(long id) {
+		return empRepo.findById(id).get();
 	}
 
 	
