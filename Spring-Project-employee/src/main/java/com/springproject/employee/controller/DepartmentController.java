@@ -1,5 +1,7 @@
 package com.springproject.employee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +22,23 @@ public class DepartmentController {
 	private DepartmentService  deptService;
 	
 	   @GetMapping("/add")
-	  public String getDepartment() {
+	  public String getDepartment(HttpSession session) {
+		   
+		   if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
 		  
 		  return "DepartmentForm";
 	  }
 
 	  @PostMapping("/add")
-	 public String postDepartment(@ModelAttribute Department  dept) {
+	 public String postDepartment(@ModelAttribute Department  dept, HttpSession session) {
+		  
+		  if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
 		  
 		 deptService.addDept(dept);
 		  
@@ -34,7 +46,12 @@ public class DepartmentController {
 	 }
 	  
 	 @GetMapping("/list")
-	 public String deptlist(Model model) {
+	 public String deptlist(Model model, HttpSession session) {
+		 		 
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
 		 
 		 model.addAttribute("deptList",deptService.getAllDepts());
 		 
@@ -42,16 +59,26 @@ public class DepartmentController {
 	 }
 	 
 	 @GetMapping("/delete")
-	 public String delete(@RequestParam int id) {
+	 public String delete(@RequestParam int id, HttpSession session) {
 		 	
-		 	deptService.deleteDept(id);
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
+		 
+		 deptService.deleteDept(id);
 		 
 		 return "redirect:/department/list";
 	 }
 	 
 	 @GetMapping("/edit")
-	 public String edit(@RequestParam int id, Model model) {
-		 	
+	 public String edit(@RequestParam int id, Model model, HttpSession session) {
+		 
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
+		 
 		 model.addAttribute("deptObject",deptService.getDeptById(id));
 		 
 		 return "DepartmentEditForm";
@@ -66,8 +93,13 @@ public class DepartmentController {
 	 }
 	 
 	 @GetMapping("/view")
-	 public String view(@RequestParam int id, Model model) {
-		 	
+	 public String view(@RequestParam int id, Model model, HttpSession session) {
+		 
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
+		 
 		 model.addAttribute("deptObject",deptService.getDeptById(id));
 		 
 		 return "DepartmentViewForm";
