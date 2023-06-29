@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Contact</title>
+</head>
+<body>
+	
+	
+	<th:block th:insert="Header.html"></th:block>
+
+	<div class="container-fluid">
+
+		<div class="card">
+			<div class="card-header text-center bg-primary text-white "><h5>Contact Details</h5></div>
+			
+			<div class="card-body">
+			
+			<form action="/contact" method="post">
+			
+			   <div class="row p-2">
+			      <div class="col-4">To</div>
+			      <div class="col-6">
+			          <input type="text" name="toEmail" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Subject</div>
+			      <div class="col-6">
+			          <input type="text" name="subject" class="form-control">
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4">Message</div>
+			      <div class="col-6">
+			          <textarea  rows="10" name="message" class="form-control" ></textarea>
+			      </div>
+			   </div>
+			   
+			   <div class="row p-2">
+			      <div class="col-4"></div>
+			      <div class="col-6">
+			          <input type="submit" value="Send" class="btn btn-success btn-lg">
+			      </div>
+			   </div>
+			   
+			</form>  
+			   
+			</div>
+			
+			<div class="card-footer text-center bg-warning ">copyright@2023</div>
+		</div>
+
+	</div>
+	
+</body>
+</html>
