@@ -1,5 +1,7 @@
 package com.springproject.employee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +26,13 @@ public class EmployeeController {
 	private DepartmentService deptService;
 	
 	@GetMapping("/add")
-	public String getEmployee(Model model) {
+	public String getEmployee(Model model, HttpSession session) {
+		
+		if(session.getAttribute("validuser") == null) {
+			
+			return "LoginForm";
+		}
+		
 		model.addAttribute("deptlist",deptService.getAllDepts());
 		
 		return "EmployeeForm";
@@ -38,7 +46,12 @@ public class EmployeeController {
 	}
 	
 	 @GetMapping("/list")
-	 public String getlist(Model model) {
+	 public String getlist(Model model, HttpSession session) {
+		 
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
 		 
 		 model.addAttribute("empList",empService.getallEmp());
 		 
@@ -46,7 +59,12 @@ public class EmployeeController {
 	 }
 	
 	@GetMapping("/edit")
-	public String editEmp(@RequestParam long id, Model model) {
+	public String editEmp(@RequestParam long id, Model model, HttpSession session) {
+		
+		if(session.getAttribute("validuser") == null) {
+			
+			return "LoginForm";
+		}
 		
 		model.addAttribute("empObject", empService.getEmpById(id));
 		model.addAttribute("deptlist",deptService.getAllDepts());
@@ -63,7 +81,7 @@ public class EmployeeController {
 	 }
 	 
 	 @GetMapping("/delete")
-	 public String delete(@RequestParam long id) {
+	 public String delete(@RequestParam long id, HttpSession session) {
 		 	
 		 	empService.deleteEmp(id);
 		 
@@ -71,7 +89,12 @@ public class EmployeeController {
 	 }
 	 
 	 @GetMapping("/view")
-	 public String view(@RequestParam long id, Model model) {
+	 public String view(@RequestParam long id, Model model, HttpSession session) {
+		 
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
 		 
 		 model.addAttribute("empObject",empService.getEmpById(id));
 		 model.addAttribute("deptlist",deptService.getAllDepts());
