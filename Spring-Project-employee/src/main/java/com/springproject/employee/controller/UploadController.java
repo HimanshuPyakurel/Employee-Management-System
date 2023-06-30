@@ -1,5 +1,7 @@
 package com.springproject.employee.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,13 @@ public class UploadController {
 	private FileUtil fileUtil;
 	
 	@GetMapping("/upload")
-	public String getUpload() {
+	public String getUpload(HttpSession session) {
+		
+		 if(session.getAttribute("validuser") == null) {
+				
+				return "LoginForm";
+			}
+		
 		return "UploadForm";
 	}
 	
