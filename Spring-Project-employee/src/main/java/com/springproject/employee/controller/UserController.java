@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springproject.employee.model.User;
 import com.springproject.employee.service.IUserService;
 
+import lombok.extern.java.Log;
 
+@Log
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -36,6 +38,8 @@ public class UserController {
 			
 			if(usr != null) {
 				
+				log.info("---------- Login Success ---------");
+				
 				session.setAttribute("validuser", usr);
 				session.setMaxInactiveInterval(200);
 				
@@ -43,6 +47,8 @@ public class UserController {
 				
 				return "Home";
 			}
+			
+			log.info("---------- Login Failed ---------");
 			model.addAttribute("message","user not found!!");
 			return  "LoginForm";
 		}
@@ -57,6 +63,8 @@ public class UserController {
 		@PostMapping("/signup")
 		public String postSignup(@ModelAttribute User user) {
 			
+			log.info("---------- SignUp Success ---------");
+			
 			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 			userService.signup(user);
 			
@@ -66,6 +74,8 @@ public class UserController {
 		@GetMapping("/logout")
 		public String Logout(HttpSession session) {
 			
+			log.info("---------- User logout Success ---------");
+			
 			session.invalidate();	//session kill
 			
 			return "LoginForm";
@@ -74,6 +84,12 @@ public class UserController {
 		 @GetMapping("/home")
 		 public String Home() {
 			 return "Home";
+		 }
+		 
+		 @GetMapping("/profile")
+		 public String getProfile() {
+			 
+			 return "Profile";
 		 }
 		
 	}
