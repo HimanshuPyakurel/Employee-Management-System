@@ -12,7 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springproject.employee.utils.FileUtil;
 
+import lombok.extern.java.Log;
+
 @Controller
+@Log
 public class UploadController {
 	
 	@Autowired
@@ -34,11 +37,14 @@ public class UploadController {
 		
 		if(!image.isEmpty()) {
 			
+		log.info("-------- Upload Success -------");
+			
 		fileUtil.fileUpload(image);
 		model.addAttribute("message","Upload Success");
 		return "UploadForm";
 		}
 		
+		log.info("-------- Upload Failed -------");
 		model.addAttribute("message","Upload Failed");
 		return "UploadForm";
 	}
