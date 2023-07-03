@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.springproject.employee.model.Employee;
 import com.springproject.employee.service.DepartmentService;
 import com.springproject.employee.service.EmployeeService;
+import com.springproject.employee.utils.EmployeeExcelView;
 
 @Controller
 @RequestMapping("/employee")
@@ -101,5 +103,18 @@ public class EmployeeController {
 		 return "EmployeeViewForm";
 	 }
 	 
+	 @GetMapping("/excel")
+	 public ModelAndView excelView() {
+		  
+		 ModelAndView mv = new ModelAndView();
+		 
+		 mv.setView(new EmployeeExcelView());
+		 
+		 mv.addObject("list",empService.getallEmp());
+		 
+		 return mv;
+	 }
+	 
+
 	
 }
