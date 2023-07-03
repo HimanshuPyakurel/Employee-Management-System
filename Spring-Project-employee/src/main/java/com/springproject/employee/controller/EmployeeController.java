@@ -16,6 +16,7 @@ import com.springproject.employee.model.Employee;
 import com.springproject.employee.service.DepartmentService;
 import com.springproject.employee.service.EmployeeService;
 import com.springproject.employee.utils.EmployeeExcelView;
+import com.springproject.employee.utils.EmployeePdfView;
 
 @Controller
 @RequestMapping("/employee")
@@ -115,6 +116,17 @@ public class EmployeeController {
 		 return mv;
 	 }
 	 
+	 @GetMapping("/pdf")
+	 public ModelAndView pdfview() {
+		 
+		 ModelAndView mv = new ModelAndView();
+		 
+		 mv.setView(new EmployeePdfView());
+		 
+		 mv.addObject("list",empService.getallEmp());
+		 
+		 return mv;
+	 }
 
 	
 }
