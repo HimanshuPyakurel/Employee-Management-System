@@ -42,4 +42,10 @@ public class EmployeeRestController {
 		empService.updateEmp(emp);
 		return "update success";
 	}
+	
+	@PutMapping("/api/emp/delete/{id}")
+	public String delete(@PathVariable Long id) {
+		empService.deleteEmp(id);
+		return "delete success";
+	}
 }
