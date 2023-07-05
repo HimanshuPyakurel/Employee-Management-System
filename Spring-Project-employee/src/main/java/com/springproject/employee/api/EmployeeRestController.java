@@ -59,6 +59,17 @@ public class EmployeeRestController {
 		return "FirstName =" +e.getFname();
 	}
 	
+	@GetMapping("/api/emp/ja2oa")
+	public String jsonToObjectArray() {
+		
+		RestTemplate temp = new RestTemplate();
+		Employee[] elist = temp.getForObject("http://localhost/api/emp/list", Employee[].class);
+		
+		return "FirstName = " +elist[0].getFname();
+	}
+	
+	
+	
 
 	
 }
