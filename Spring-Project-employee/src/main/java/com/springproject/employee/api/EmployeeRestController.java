@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.springproject.employee.model.Employee;
 import com.springproject.employee.service.EmployeeService;
@@ -26,7 +27,7 @@ public class EmployeeRestController {
 		
 	}
 	
-	@PostMapping("/api/emp/{id}")
+	@GetMapping("/api/emp/{id}")
 	public Employee getOneEmp(@PathVariable Long id) {
 		return empService.getEmpById(id);
 	}
@@ -48,4 +49,16 @@ public class EmployeeRestController {
 		empService.deleteEmp(id);
 		return "delete success";
 	}
+	
+	@GetMapping("/api/emp/j2o")
+	public String jsonToObjectMapping() {
+		
+		RestTemplate temp = new RestTemplate();
+		Employee e = temp.getForObject("http://localhost/api/emp/2", Employee.class);
+		
+		return "FirstName =" +e.getFname();
+	}
+	
+
+	
 }
