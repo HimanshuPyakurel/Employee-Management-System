@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.springproject.employee.model.Employee;
+import com.springproject.employee.model.Product;
+import com.springproject.employee.repository.ProductRepository;
 import com.springproject.employee.service.EmployeeService;
 
 @RestController
 public class EmployeeRestController {
+	
+	@Autowired
+	private ProductRepository prodRepo;
 	
 	@Autowired
 	private EmployeeService empService;
@@ -68,6 +73,16 @@ public class EmployeeRestController {
 		return "FirstName = " +elist[0].getFname();
 	}
 	
+	@GetMapping("/api/emp/load")
+	public String loadProductData() {
+		
+		RestTemplate temp = new RestTemplate();
+		Product[] plist = temp.getForObject("http://fakestoreapi.com/products", Product[].class);
+		
+		prodRepo.saveAll(List.of(plist));
+		
+		return "success";
+	}
 	
 	
 
