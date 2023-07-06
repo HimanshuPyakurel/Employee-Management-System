@@ -10,6 +10,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="/login/css/style.css">
     
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 <body>
@@ -38,6 +39,9 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="your_pass" placeholder="Password"/>
                             </div>
+                            
+                            <div class="g-recaptcha" data-sitekey="6LcibvwmAAAAAGvtWiUob2x6Pyv3a9By-T69LycH"></div>
+                            
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
@@ -45,7 +49,7 @@
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="/user/facebook"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
