@@ -1,5 +1,8 @@
 package com.springproject.employee.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springproject.employee.model.User;
 import com.springproject.employee.service.IUserService;
+import com.springproject.employee.utils.VerifyRecaptcha;
 
 import lombok.extern.java.Log;
 
@@ -31,27 +36,36 @@ public class UserController {
 		}
 		
 		@PostMapping("/login")
-		public String postLogin(@ModelAttribute User user, Model model, HttpSession session) {
+		public String postLogin(@ModelAttribute User user, Model model, HttpSession session, @RequestParam("g-recaptcha-response") String grcCode) throws IOException {
+			
+			if(VerifyRecaptcha.verify(grcCode)) {
 			
 			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 			User  usr = userService.login(user.getUsername(), user.getPassword());
 			
-			if(usr != null) {
+				if(usr != null) {
+					log.info("---------- Login Success ---------");
+					
+					session.setAttribute("validuser", usr);
+					session.setMaxInactiveInterval(200);
+					
+					//model.addAttribute("user",usr);
+					return "Home";
+				}else {
+					log.info("---------- Login Failed ---------");
+					model.addAttribute("message","User not Found!!!");
+					return  "LoginForm";
+				}
 				
-				log.info("---------- Login Success ---------");
 				
-				session.setAttribute("validuser", usr);
-				session.setMaxInactiveInterval(200);
-				
-				//model.addAttribute("user",usr);
-				
-				return "Home";
 			}
 			
-			log.info("---------- Login Failed ---------");
-			model.addAttribute("message","user not found!!");
-			return  "LoginForm";
-		}
+				log.info("---------- Login Failed ---------");
+				model.addAttribute("message","You are not human !!!");
+				return  "LoginForm";
+	
+			}
+		
 		
 		
 		@GetMapping("/signup")
