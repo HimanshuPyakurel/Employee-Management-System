@@ -105,5 +105,17 @@ public class UserController {
 			 
 			 return "Profile";
 		 }
+		 
+		 @GetMapping("/facebook")
+			public String facebookLogin() {
+
+				return "redirect:https://www.facebook.com/dialog/oauth?client_id=5372666229424280&redirect_uri=http://localhost/user/auth/facebook&response_type=code&scope=email";
+			}
+
+			@GetMapping("/auth/facebook")
+			public String saveFbUser(String code, Model model, HttpServletRequest request) {
+
+				return "Home";
+			}
 		
 	}
